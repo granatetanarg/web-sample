@@ -20,9 +20,9 @@
     <div class="container">
         <script>
             var today = new Date();
-            document.write('<p>今日は、' + today.getDate() + '日です</p>');
+            var todayhtml = today.getFullYear() + '/' + (today.getMonth() +1) + '/' + today.getDate();
 
-            document.write(Math.abs(-10));
+            document.write('<p class ="date">' + todayhtml + '</p>');
         </script>
     </div>
 </body>
