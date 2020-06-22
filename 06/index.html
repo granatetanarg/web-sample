@@ -23,14 +23,7 @@
     </div>
 
     <script>
-        var now = new Date();
-        var seconds = now.getSeconds(); //秒を取得
-        
-        if(seconds < 10){
-            seconds = '0' + seconds;
-        }
-        
-        document.getElementById('timer').innerHTML = hours +':'+ minutes +':'+ seconds;
+        document.getElementById('timer').innerHTML = '00:00:01';
     </script>
 </body>
 </html>
