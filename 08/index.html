@@ -16,31 +16,26 @@
 
     <div class="container">
         <div id="img_unit">
-        </div>
-
-        <div id="vue_unit">
-            {{ greeting}}<br>
-            {{ message }}
+            <div class="photo" v-for="Photo in Photos">
+                <img :src="Photo.path">
+                <div class="inner"><p>{{ Photo.caption }}<span>{{ Photo.name }}</span></p></div>
+            </div>
         </div>
     </div>
 
     <script src="js/jquery.min.js"></script>
     <script src="https://unpkg.com/vue"></script>
     <script>
-        $.getJSON('https://h2o-space.com/htmlbook/images.php', function(data) {
-            for ( i=0; i<data.length; i++) {
-                $('<div class="photo"></div>')
-                    .append('<img src="' + data[i].path + '">')
-                    .append('<div class="inner"><p>' + data[i].caption + '<span>' + data[i].name + '</span></p></div>')
-                    .appendTo('#img_unit');
-            }
-        });
-
         var app = new Vue({
-            el: '#vue_unit',
+            el: '#img_unit',
             data: {
-                message: 'Vue.jsで書き換えました',
-                greeting: 'こんにちは'
+                Photos: []
+            },
+            created: function() {
+                var self = this;
+                $.getJSON('https://h2o-space.com/htmlbook/images.php', function(data) {
+                    self.Photos = data;
+                });
             }
         });
     </script>
